@@ -22,4 +22,14 @@ class Pharmacy extends Model
         'address' => 'required',
         'logo' => 'nullbale|file',
     ];
+
+    /**
+     * Retrieve all products belongs to pharmacy
+     * 
+     * @return Collection
+     */
+    public function products()
+    {
+        return $this->belongsToMany(\App\Models\Product::class);
+    }
 }

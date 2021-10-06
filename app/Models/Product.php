@@ -21,4 +21,14 @@ class Product extends Model
         'title' => 'required',
         'image' => 'nullbale|file',
     ];
+
+    /**
+     * Retrieve all pharmacies have this product
+     * 
+     * @return Collection
+     */
+    public function pharmacies()
+    {
+        return $this->belongsToMany(\App\Models\Pharmacy::class);
+    }
 }
