@@ -13,14 +13,26 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 float-right">
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown dropstart">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-star"></i> {{ __('Add New') }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">{{ __('Pharmacy') }}</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">{{ __('Product') }}</a></li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="fa fa-mortar-pestle"></i>
+                                {{ __('Pharmacy') }}
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="fa fa-pills"></i>
+                                {{ __('Product') }}
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
