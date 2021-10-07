@@ -18,4 +18,18 @@
     height: 30px;
     width: 30px;
 }
+
+.navbar-collapse {
+    flex-grow: 0 !important;
+}
+
+.search-box {
+    width: 400px;
+}
 /* ************ [Header] ************ */
+
+/* ************ [Main] ************ */
+main {
+    min-height: 500px;
+}
+/* ************ [Main] ************ */
