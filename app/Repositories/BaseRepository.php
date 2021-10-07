@@ -110,11 +110,12 @@ class BaseRepository implements BaseRepositoryInterface
     /**
      * Get all models (latest first)
      *
+     * @param int $limit
      * @return Collection
      */
-    public function latest()
+    public function latest($limit = 8)
     {
-        return $this->model->latest()->get();
+        return $this->model->latest()->take($limit)->get();
     }
 
     /**

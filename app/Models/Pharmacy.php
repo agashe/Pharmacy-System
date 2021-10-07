@@ -32,4 +32,14 @@ class Pharmacy extends Model
     {
         return $this->belongsToMany(\App\Models\Product::class);
     }
+
+    /**
+     * Get Logo URL
+     * 
+     * @return String
+     */
+    public function getLogoSrcAttribute()
+    {
+        return asset($this->logo ?? 'assets/images/placeholder.jpg');
+    }
 }

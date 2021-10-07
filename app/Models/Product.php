@@ -31,4 +31,14 @@ class Product extends Model
     {
         return $this->belongsToMany(\App\Models\Pharmacy::class);
     }
+
+    /**
+     * Get Image URL
+     * 
+     * @return String
+     */
+    public function getImageSrcAttribute()
+    {
+        return asset($this->image ?? 'assets/images/placeholder.jpg');
+    }
 }
