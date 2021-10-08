@@ -3,9 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\Contracts\PharmacyRepositoryInterface;
 
 class PharmacyController extends Controller
 {
+    /**
+     * @var PharmacyRepositoryInterface $pharmacyRepository 
+     */
+    private $pharmacyRepository;
+
+    /**
+     * PharmacyController Constructor
+     */
+    public function __construct(PharmacyRepositoryInterface $pharmacyRepository)
+    {
+        $this->pharmacyRepository = $pharmacyRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +27,9 @@ class PharmacyController extends Controller
      */
     public function index()
     {
-        //
+        return view('pharmacies.index', [
+            'pharmacies' => $this->pharmacyRepository->paginated(25)
+        ]);
     }
 
     /**
@@ -23,7 +39,7 @@ class PharmacyController extends Controller
      */
     public function create()
     {
-        //
+        return view('pharmacies.create');
     }
 
     /**
@@ -34,7 +50,12 @@ class PharmacyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->pharmacyRepository->rules());
+
+        $this->pharmacyRepository->create($request->except('token'));
+
+        return redirect()->route('pharmacies.index')
+            ->with('success', __('Created Successfully'));
     }
 
     /**
@@ -45,7 +66,9 @@ class PharmacyController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('pharmacies.show', [
+            'pharmacy' => $this->pharmacyRepository->find($id)
+        ]);
     }
 
     /**
@@ -56,7 +79,9 @@ class PharmacyController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pharmacies.edit', [
+            'pharmacies' => $this->pharmacyRepository->find($id)
+        ]);
     }
 
     /**
@@ -68,7 +93,12 @@ class PharmacyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate($this->pharmacyRepository->rules());
+
+        $this->pharmacyRepository->update($id, $request->except('token'));
+
+        return redirect()->route('pharmacies.index')
+            ->with('success', __('Updated Successfully'));
     }
 
     /**
@@ -79,6 +109,9 @@ class PharmacyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->pharmacyRepository->delete($id);
+
+        return redirect()->route('pharmacies.index')
+            ->with('success', __('Deleted Successfully'));
     }
 }

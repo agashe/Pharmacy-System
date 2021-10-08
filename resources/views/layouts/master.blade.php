@@ -40,5 +40,13 @@
     <script src="{{ asset('assets/js/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <!-- [JS] -->
+
+    <!-- [Session Messages] -->
+    @if (session()->has('success'))
+        <script>
+            toastr.success("{{ session('success') }}");
+        </script>
+    @endif
+    <!-- [Session Messages] -->
 </body>
 </html>

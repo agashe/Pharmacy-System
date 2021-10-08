@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-8 mx-auto py-3">
             <div class="row">
-                <h4 class="d- w-50">{{ __('Latest Products') }}</h4>
+                <h4 class="w-50">{{ __('Latest Products') }}</h4>
                 <a href="{{ route('products.index') }}" class="text-end d-inline w-50">
                     <i class="fa fa-plus-circle"></i>
                     {{ __('Show More') }}
@@ -35,7 +35,7 @@
     <div class="row">
         <div class="col-md-8 mx-auto py-3">
             <div class="row">
-                <h4 class="d- w-50">{{ __('Latest Pharmacies') }}</h4>
+                <h4 class="w-50">{{ __('Latest Pharmacies') }}</h4>
                 <a href="{{ route('pharmacies.index') }}" class="text-end d-inline w-50">
                     <i class="fa fa-plus-circle"></i>
                     {{ __('Show More') }}
