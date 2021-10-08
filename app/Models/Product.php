@@ -39,6 +39,6 @@ class Product extends Model
      */
     public function getImageSrcAttribute()
     {
-        return asset($this->image ?? 'assets/images/placeholder.jpg');
+        return asset($this->image ? 'storage/'.$this->image : 'assets/images/placeholder.jpg');
     }
 }

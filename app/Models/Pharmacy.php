@@ -40,6 +40,6 @@ class Pharmacy extends Model
      */
     public function getLogoSrcAttribute()
     {
-        return asset($this->logo ?? 'assets/images/placeholder.jpg');
+        return asset($this->logo ? 'storage/'.$this->logo : 'assets/images/placeholder.jpg');
     }
 }

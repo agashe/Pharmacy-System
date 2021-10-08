@@ -52,13 +52,12 @@ class PharmacyController extends Controller
     {
         $request->validate($this->pharmacyRepository->rules());
 
-        if ($request->has('logo')) {
-            $logoPath = $request->file('logo')->store('images');            
-        }
-        
         $data = $request->except(['_token', 'logo']);
-        $data['logo'] = $logoPath;
-        
+
+        if ($request->has('logo')) {
+            $data['logo'] = $request->file('logo')->store('images');            
+        }
+                
         $this->pharmacyRepository->create($data);
 
         return redirect()->route('pharmacies.index')
@@ -102,7 +101,14 @@ class PharmacyController extends Controller
     {
         $request->validate($this->pharmacyRepository->rules());
 
-        $this->pharmacyRepository->update($id, $request->except('token'));
+        $data = $request->except(['_token', 'logo']);
+        
+        if ($request->has('logo')) {
+            $logoPath = $request->file('logo')->store('images');            
+            $data['logo'] = $logoPath;
+        }
+        
+        $this->pharmacyRepository->update($id, $data);
 
         return redirect()->route('pharmacies.index')
             ->with('success', __('Updated Successfully'));
