@@ -52,7 +52,14 @@ class PharmacyController extends Controller
     {
         $request->validate($this->pharmacyRepository->rules());
 
-        $this->pharmacyRepository->create($request->except('token'));
+        if ($request->has('logo')) {
+            $logoPath = $request->file('logo')->store('images');            
+        }
+        
+        $data = $request->except(['_token', 'logo']);
+        $data['logo'] = $logoPath;
+        
+        $this->pharmacyRepository->create($data);
 
         return redirect()->route('pharmacies.index')
             ->with('success', __('Created Successfully'));

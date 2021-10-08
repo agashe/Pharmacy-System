@@ -20,7 +20,7 @@ class Pharmacy extends Model
     public $rules = [
         'name' => 'required',
         'address' => 'required',
-        'logo' => 'nullbale|file',
+        'logo' => 'nullable|file',
     ];
 
     /**

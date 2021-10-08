@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('assets/images/pharmacy-logo.png') }}" alt="logo" class="logo">
+            <img src="{{ asset('assets/images/pharmacy-logo.png') }}" alt="{{ __('Logo') }}" class="logo">
             {{ __('Pharmacy System') }}
         </a>
         <form class="d-flex search-box">

@@ -19,7 +19,7 @@ class Product extends Model
      */
     public $rules = [
         'title' => 'required',
-        'image' => 'nullbale|file',
+        'image' => 'nullable|file',
     ];
 
     /**

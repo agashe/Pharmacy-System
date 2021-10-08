@@ -14,7 +14,7 @@
                 @foreach ($latestProducts as $product)
                     <div class="col-md-3 mb-4">
                         <div class="card text-center">
-                            <img src="{{ $product->image_src }}" class="card-img-top" alt="Product Image">
+                            <img src="{{ $product->image_src }}" class="card-img-top" alt="{{ __('Product Image') }}">
                             <div class="card-body">
                                 <p class="card-title">{{ substr($product->title, 0, 30) }}</p>
                                 <a href="{{ route('products.show', $product->id) }}" 
@@ -45,7 +45,7 @@
                 @foreach ($latestPharmacies as $pharmacy)
                     <div class="col-md-3 mb-4">
                         <div class="card text-center">
-                            <img src="{{ $pharmacy->logo_src }}" class="card-img-top" alt="Product Image">
+                            <img src="{{ $pharmacy->logo_src }}" class="card-img-top" alt="{{ __('Pharmacy Logo') }}">
                             <div class="card-body">
                                 <p class="card-title">{{ substr($pharmacy->name, 0, 30) }}</p>
                                 <a href="{{ route('pharmacies.show', $pharmacy->id) }}" 
