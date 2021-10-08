@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{ asset('assets/images/pharmacy-logo.png') }}" alt="logo" class="logo">
             {{ __('Pharmacy System') }}
         </a>

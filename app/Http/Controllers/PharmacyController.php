@@ -80,7 +80,7 @@ class PharmacyController extends Controller
     public function edit($id)
     {
         return view('pharmacies.edit', [
-            'pharmacies' => $this->pharmacyRepository->find($id)
+            'pharmacy' => $this->pharmacyRepository->find($id)
         ]);
     }
 

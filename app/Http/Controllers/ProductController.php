@@ -80,7 +80,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         return view('products.edit', [
-            'products' => $this->productRepository->find($id)
+            'product' => $this->productRepository->find($id)
         ]);
     }
 

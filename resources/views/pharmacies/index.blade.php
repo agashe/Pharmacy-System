@@ -4,7 +4,10 @@
 <div class="row">
     <div class="col-md-12 mx-auto py-3">
         <div class="row">
-            <h4 class="w-50">{{ __('Pharmacies') }}</h4>
+            <h4 class="w-50">
+                <i class="fa fa-mortar-pestle"></i>
+                {{ __('Pharmacies') }}
+            </h4>
             <a a href="{{ route('pharmacies.create') }}" class="text-end d-inline w-50">
                <i class="fa fa-star"></i>
                 {{ __('Add New') }}
