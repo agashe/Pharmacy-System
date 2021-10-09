@@ -103,4 +103,23 @@ $(document).ready(function(){
         $('input[name="product_id"]').val($(this).data('id'));
         $('.product-search-results').find('ul').hide();
     });
+
+    /**
+     * Remove Products From Pharmacy
+     */    
+     $('.remove-button').click(function() {
+        if (!confirm('Are you sure ?'))
+            return;
+
+        $('body').append(`
+            <form id="remove-form" class="d-none" method="POST" action="${url + '/pharmacies/remove/product'}">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="${$('meta[name="csrf-token"]').attr('content')}">
+                <input type="hidden" name="pharmacy_id" value="${$(this).data('pharmacy')}">
+                <input type="hidden" name="product_id" value="${$(this).data('product')}">
+            </form>
+        `);
+
+        $(document).find('#remove-form').submit();
+    });
 });

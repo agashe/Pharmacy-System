@@ -51,7 +51,7 @@
                                 <i class="fa fa-eye"></i>
                                 {{ __('Show') }}
                             </a>
-                            <a  data-pharmacy="{{ $pharmacy->id }}" data-product="{{ $product->id }}"
+                            <a data-pharmacy="{{ $pharmacy->id }}" data-product="{{ $product->id }}"
                                 class="btn btn-danger remove-button">
                                 <i class="fa fa-times-circle"></i>
                                 {{ __('Remove') }}

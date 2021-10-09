@@ -147,11 +147,18 @@ class PharmacyController extends Controller
      */
     public function addProduct(Request $request)
     {
-        dd($request->all());
-        // $this->pharmacyRepository->delete($id);
+        $this->pharmacyRepository->attach(
+            $request->pharmacy_id, 
+            'products',
+            $request->product_id,
+            [
+                'price' => $request->price,
+                'quantity' => $request->quantity,
+            ]
+        );
 
-        return redirect()->route('pharmacies.index')
-            ->with('success', __('Deleted Successfully'));
+        return redirect()->route('pharmacies.show', $request->pharmacy_id)
+            ->with('success', __('Added Successfully'));
     }
 
     /**
@@ -162,9 +169,13 @@ class PharmacyController extends Controller
      */
     public function removeProduct(Request $request)
     {
-        // $this->pharmacyRepository->delete($id);
+        $this->pharmacyRepository->detach(
+            $request->pharmacy_id, 
+            'products',
+            $request->product_id
+        );
 
-        return redirect()->route('pharmacies.index')
-            ->with('success', __('Deleted Successfully'));
+        return redirect()->route('pharmacies.show', $request->pharmacy_id)
+            ->with('success', __('Removed Successfully'));
     }
 }
