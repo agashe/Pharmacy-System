@@ -27,7 +27,6 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $pharmacy->name }}</td>
-                        <td>{{ $pharmacy->address }}</td>
                         <td>
                             <a href="{{ route('pharmacies.show', $pharmacy->id) }}"
                                 class="btn btn-success">

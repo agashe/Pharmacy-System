@@ -16,6 +16,42 @@
                 <td>{{ $product->desc }}</td>
             </tr>
         </table>
+
+        <div class="row mt-5 mb-3">
+            <h4 class="text-center">
+                <i class="fa fa-mortar-pestle"></i>
+                {{ __('Pharmacies') }}
+            </h4>
+        </div>
+
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>{{ __('#') }}</th>
+                    <th>{{ __('Name') }}</th>
+                    <th>{{ __('Price') }}</th>
+                    <th>{{ __('Quantity') }}</th>
+                    <th>{{ __('Actions') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($product->pharmacies as $pharmacy)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $pharmacy->name }}</td>
+                        <td>{{ $pharmacy->pivot->price }}</td>
+                        <td>{{ $pharmacy->pivot->quantity }}</td>
+                        <td>
+                            <a href="{{ route('pharmacies.show', $pharmacy->id) }}"
+                                class="btn btn-success">
+                                <i class="fa fa-eye"></i>
+                                {{ __('Show') }}
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </div>
 @endsection

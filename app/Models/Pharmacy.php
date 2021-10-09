@@ -30,7 +30,7 @@ class Pharmacy extends Model
      */
     public function products()
     {
-        return $this->belongsToMany(\App\Models\Product::class);
+        return $this->belongsToMany(\App\Models\Product::class)->withPivot(['price', 'quantity']);
     }
 
     /**

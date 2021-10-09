@@ -16,6 +16,53 @@
                 <td>{{ $pharmacy->address }}</td>
             </tr>
         </table>
+
+        <div class="row mt-5 mb-3">
+            <h4 class="w-50">
+                <i class="fa fa-pills"></i>
+                {{ __('Products') }}
+            </h4>
+            <a a href="{{ url('/pharmacies/add/product') }}" class="text-end d-inline w-50">
+               <i class="fa fa-plus-circle"></i>
+                {{ __('Add Product') }}
+            </a>
+        </div>
+
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>{{ __('#') }}</th>
+                    <th>{{ __('Name') }}</th>
+                    <th>{{ __('Price') }}</th>
+                    <th>{{ __('Quantity') }}</th>
+                    <th>{{ __('Actions') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($pharmacy->products as $product)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $product->title }}</td>
+                        <td>{{ $product->pivot->price }}</td>
+                        <td>{{ $product->pivot->quantity }}</td>
+                        <td>
+                            <a href="{{ route('products.show', $product->id) }}"
+                                class="btn btn-success">
+                                <i class="fa fa-eye"></i>
+                                {{ __('Show') }}
+                            </a>
+                            <a data-action="{{ route('pharmacies.products.remove') }}"
+                                data-pharmacy="{{ $pharmacy->id }}"
+                                data-product="{{ $product->id }}"
+                                class="btn btn-danger remove-button">
+                                <i class="fa fa-times-circle"></i>
+                                {{ __('Remove') }}
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </div>
 @endsection
