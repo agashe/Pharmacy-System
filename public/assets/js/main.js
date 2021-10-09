@@ -32,4 +32,16 @@ $(document).ready(function(){
 
         $(document).find('#delete-form').submit();
     });
+
+    /**
+     * Search Products
+     */
+    $('#search-keyword').keyup(function() {
+        $.ajax({
+            url: `${url}'/products?forAjax=1&keyword=${$(this).val()}`,
+        })
+        .done(function(data) {
+            
+        });
+    });
 });

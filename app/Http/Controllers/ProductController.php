@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\ProductSearchResource;
 use App\Repositories\Contracts\ProductRepositoryInterface;
 
 class ProductController extends Controller
@@ -23,12 +24,30 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request  $request)
     {
+        $products = [];
+
+        if (isset($request->keyword) && !empty($request->keyword)) {
+            if (isset($request->forAjax) && $request->forAjax != 0) {
+                return response()->json(ProductSearchResource::collection(
+                    $products = $this->productRepository
+                        ->searchAll('title', $request->keyword)
+                ));
+            } else {
+                $products = $this->productRepository
+                    ->searchAllPaginated('title', $request->keyword, 25);
+            }
+        } else {
+            $products = $this->productRepository->paginated(25);
+        }
+
         return view('products.index', [
-            'products' => $this->productRepository->paginated(25)
+            'products' => $products,
+            'keyword' => $request->keyword ?? ''
         ]);
     }
 

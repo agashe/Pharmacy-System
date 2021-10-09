@@ -52,6 +52,16 @@ interface BaseRepositoryInterface
     public function searchAll($field, $value);
 
     /**
+     * Get all models by field (paginated)
+     *
+     * @param string $field
+     * @param string $value
+     * @param int $perPage
+     * @return Collection
+     */
+    public function searchAllPaginated($field, $value, $perPage);
+
+    /**
      * Check value of model's field
      *
      * @param int $id
@@ -76,7 +86,7 @@ interface BaseRepositoryInterface
     public function latest();
 
     /**
-     * Get all models (latest first)
+     * Get all models (paginated)
      *
      * @param int $perPage
      * @return Collection

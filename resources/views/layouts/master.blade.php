@@ -49,5 +49,11 @@
         </script>
     @endif
     <!-- [Session Messages] -->
+
+    <!-- [Default URL] -->
+    <script>
+        var url = "{{ url('/') }}";
+    </script>
+    <!-- [Default URL] -->
 </body>
 </html>

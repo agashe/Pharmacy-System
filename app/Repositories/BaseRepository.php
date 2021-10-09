@@ -83,6 +83,19 @@ class BaseRepository implements BaseRepositoryInterface
     }
 
     /**
+     * Get all models by field (paginated)
+     *
+     * @param string $field
+     * @param string $value
+     * @param int $perPage
+     * @return Collection
+     */
+    public function searchAllPaginated($field, $value, $perPage)
+    {
+        return $this->model->where($field, 'like', '%'.$value.'%')->paginate($perPage);
+    }
+
+    /**
      * Check value of model's field
      *
      * @param int $id
@@ -119,7 +132,7 @@ class BaseRepository implements BaseRepositoryInterface
     }
 
     /**
-     * Get all models (latest first)
+     * Get all models (paginated)
      *
      * @param int $perPage
      * @return Collection

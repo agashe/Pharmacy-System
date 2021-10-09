@@ -14,42 +14,49 @@
             </a>
         </div>
 
-        <table class="table table-bordered">
-            <thead class="table-dark">
-                <tr>
-                    <th>{{ __('#') }}</th>
-                    <th>{{ __('Title') }}</th>
-                    <th>{{ __('Actions') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($products as $product)
+        @if (count($products))
+            <table class="table table-bordered">
+                <thead class="table-dark">
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $product->title }}</td>
-                        <td>
-                            <a href="{{ route('products.show', $product->id) }}"
-                                class="btn btn-success">
-                                <i class="fa fa-eye"></i>
-                                {{ __('Show') }}
-                            </a>
-                            <a href="{{ route('products.edit', $product->id) }}"
-                                class="btn btn-warning">
-                                <i class="fa fa-edit"></i>
-                                {{ __('Edit') }}
-                            </a>
-                            <a data-action="{{ route('products.destroy', $product->id) }}"
-                                class="btn btn-danger delete-button">
-                                <i class="fa fa-trash"></i>
-                                {{ __('Delete') }}
-                            </a>
-                        </td>
+                        <th>{{ __('#') }}</th>
+                        <th>{{ __('Title') }}</th>
+                        <th>{{ __('Actions') }}</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($products as $product)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $product->title }}</td>
+                            <td>
+                                <a href="{{ route('products.show', $product->id) }}"
+                                    class="btn btn-success">
+                                    <i class="fa fa-eye"></i>
+                                    {{ __('Show') }}
+                                </a>
+                                <a href="{{ route('products.edit', $product->id) }}"
+                                    class="btn btn-warning">
+                                    <i class="fa fa-edit"></i>
+                                    {{ __('Edit') }}
+                                </a>
+                                <a data-action="{{ route('products.destroy', $product->id) }}"
+                                    class="btn btn-danger delete-button">
+                                    <i class="fa fa-trash"></i>
+                                    {{ __('Delete') }}
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
 
-        {{ $products->links() }}
+            {{ $products->links() }}
+        @else
+            <h4 class="text-center text-danger my-5">
+                <i class="fa fa-exclamation-triangle"></i>
+                {{ __('Sorry, no results were found') }}
+            </h4>
+        @endif
     </div>
 </div>
 @endsection

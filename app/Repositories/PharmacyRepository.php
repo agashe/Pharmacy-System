@@ -22,4 +22,31 @@ class PharmacyRepository extends BaseRepository implements PharmacyRepositoryInt
     {
         $this->model = $model;
     }
+
+    /**
+     * Attach model/s to this model.
+     * 
+     * @param string $relation
+     * @param int $id
+     * @param array $data
+     * @return bool
+     */
+    public function attach($relation, $id, $data)
+    {
+        return $this->$relation()->attach([
+            $id => $data
+        ]);
+    }
+
+    /**
+     * Dettach model/s from this model.
+     * 
+     * @param string $relation
+     * @param int $id
+     * @return bool
+     */
+    public function detach($relation, $id)
+    {
+        return $this->$relation()->attach($id);
+    }
 }
