@@ -65,4 +65,42 @@ $(document).ready(function(){
             }
         });
     });
+
+    /**
+     * Add Products To Pharmacy
+     */
+    $('.product-search-results').find('ul').hide();
+    $('#product-search-keyword').on('keyup', function(e) {
+        let keyword = $(this).val();
+        if (!keyword || keyword.length < 3) {
+            $('.product-search-results').find('ul').hide();
+            return;
+        }
+
+        $.ajax({
+            type: 'GET',
+            url: url + '/products?forAjax=1&keyword=' + keyword,
+        })
+        .done(function(data) {
+            if (data) {
+                let html = '';
+                $('.product-search-results').find('ul').html(html);
+
+                data.forEach(function(item) {
+                    html += `
+                        <li data-id="${item.id}">
+                            <a>${item.title}</a>
+                        </li>
+                    `; 
+                });
+
+                $('.product-search-results').find('ul').append(html).show();
+            }
+        });
+    });
+    $(document).on('click', '.product-search-results ul li', function() {
+        $('#product-search-keyword').val($(this).text().trim());
+        $('input[name="product_id"]').val($(this).data('id'));
+        $('.product-search-results').find('ul').hide();
+    });
 });

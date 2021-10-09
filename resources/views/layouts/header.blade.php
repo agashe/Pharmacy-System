@@ -7,7 +7,7 @@
         <form class="d-flex search-box" method="GET" action="{{ route('products.index') }}">
             <input type="hidden" name="forAjax" value="0">
             <div class="search-results">
-                <input class="form-control" id="search-keyword" name="keyword" type="search" 
+                <input class="form-control" id="search-keyword" name="keyword" type="text" 
                     placeholder="{{ __('Type something ...') }}" aria-label="Search" value="{{ isset($keyword)? $keyword : '' }}" 
                     autocomplete="off">
                     

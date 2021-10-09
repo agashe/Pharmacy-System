@@ -16,12 +16,19 @@
             </div>
         @endif
 
-        <form action="{{ route('pharmacies.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('pharmacies/add/product') }}" method="POST">
             @csrf
+            <input type="hidden" name="pharmacy_id" value="{{ $id }}">
 
             <div class="form-group mt-3">
                 <label for="name">{{ __('Title') }}</label>
-                <input id="name" class="form-control" type="text" name="name" required>
+                <div class="search-results product-search-results">
+                    <input class="form-control" id="product-search-keyword" name="keyword" type="search" autocomplete="off">
+                        
+                    <ul>
+                        <!-- [Search Results] -->
+                    </ul>
+                </div>
                 <input type="hidden" name="product_id">
             </div>
             <div class="form-group mt-3">

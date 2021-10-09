@@ -127,4 +127,44 @@ class PharmacyController extends Controller
         return redirect()->route('pharmacies.index')
             ->with('success', __('Deleted Successfully'));
     }
+
+    /**
+     * Show the form for adding product to pharmacy.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function addProductView($id)
+    {
+        return view('pharmacies.add_product', ['id' => $id]);
+    }
+
+    /**
+     * Add product to pharmacy.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function addProduct(Request $request)
+    {
+        dd($request->all());
+        // $this->pharmacyRepository->delete($id);
+
+        return redirect()->route('pharmacies.index')
+            ->with('success', __('Deleted Successfully'));
+    }
+
+    /**
+     * Remove product from pharmacy.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function removeProduct(Request $request)
+    {
+        // $this->pharmacyRepository->delete($id);
+
+        return redirect()->route('pharmacies.index')
+            ->with('success', __('Deleted Successfully'));
+    }
 }

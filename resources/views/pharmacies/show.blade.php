@@ -22,7 +22,7 @@
                 <i class="fa fa-pills"></i>
                 {{ __('Products') }}
             </h4>
-            <a a href="{{ url('/pharmacies/add/product') }}" class="text-end d-inline w-50">
+            <a a href="{{ url('/pharmacies/add/product/view/'.$pharmacy->id) }}" class="text-end d-inline w-50">
                <i class="fa fa-plus-circle"></i>
                 {{ __('Add Product') }}
             </a>
@@ -51,9 +51,7 @@
                                 <i class="fa fa-eye"></i>
                                 {{ __('Show') }}
                             </a>
-                            <a data-action="{{ route('pharmacies.products.remove') }}"
-                                data-pharmacy="{{ $pharmacy->id }}"
-                                data-product="{{ $product->id }}"
+                            <a  data-pharmacy="{{ $pharmacy->id }}" data-product="{{ $product->id }}"
                                 class="btn btn-danger remove-button">
                                 <i class="fa fa-times-circle"></i>
                                 {{ __('Remove') }}
