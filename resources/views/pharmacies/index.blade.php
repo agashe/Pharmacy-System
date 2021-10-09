@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-12 mx-auto py-3">
+    <div class="col-md-8 mx-auto py-3">
         <div class="row">
             <h4 class="w-50">
                 <i class="fa fa-mortar-pestle"></i>
@@ -19,7 +19,6 @@
                 <tr>
                     <th>{{ __('#') }}</th>
                     <th>{{ __('Name') }}</th>
-                    <th>{{ __('Address') }}</th>
                     <th>{{ __('Actions') }}</th>
                 </tr>
             </thead>

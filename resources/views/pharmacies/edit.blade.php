@@ -21,15 +21,15 @@
             @csrf
 
             <div class="form-group mt-3">
-                <label for="name">Name</label>
+                <label for="name">{{ __('Name') }}</label>
                 <input id="name" class="form-control" type="text" name="name" value="{{ $pharmacy->name }}" required>
             </div>
             <div class="form-group mt-3">
-                <label for="address">Address</label>
+                <label for="address">{{ __('Address') }}</label>
                 <input id="address" class="form-control" type="text" name="address" value="{{ $pharmacy->address }}" required>
             </div>
             <div class="form-group mt-5">
-                <label for="logo">Logo</label>
+                <label for="logo">{{ __('Logo') }}</label>
                 <input id="logo" class="form-control-file" type="file" name="logo" accept="image/*">
             </div>
             <div class="form-group mt-5">

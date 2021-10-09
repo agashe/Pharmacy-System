@@ -52,7 +52,13 @@ class ProductController extends Controller
     {
         $request->validate($this->productRepository->rules());
 
-        $this->productRepository->create($request->except('token'));
+        $data = $request->except(['_token', 'image']);
+
+        if ($request->has('image')) {
+            $data['image'] = $request->file('image')->store('images');            
+        }
+                
+        $this->productRepository->create($data);
 
         return redirect()->route('products.index')
             ->with('success', __('Created Successfully'));
@@ -95,7 +101,14 @@ class ProductController extends Controller
     {
         $request->validate($this->productRepository->rules());
 
-        $this->productRepository->update($id, $request->except('token'));
+        $data = $request->except(['_token', 'image']);
+        
+        if ($request->has('image')) {
+            $imagePath = $request->file('image')->store('images');            
+            $data['image'] = $imagePath;
+        }
+        
+        $this->productRepository->update($id, $data);
 
         return redirect()->route('products.index')
             ->with('success', __('Updated Successfully'));
