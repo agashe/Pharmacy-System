@@ -6,7 +6,15 @@
         </a>
         <form class="d-flex search-box" method="GET" action="{{ route('products.index') }}">
             <input type="hidden" name="forAjax" value="0">
-            <input class="form-control me-2" id="search-keyword" name="keyword" type="search" placeholder="{{ __('Type something ...') }}" aria-label="Search" value="{{ isset($keyword)? $keyword : '' }}">
+            <div class="search-results">
+                <input class="form-control" id="search-keyword" name="keyword" type="search" 
+                    placeholder="{{ __('Type something ...') }}" aria-label="Search" value="{{ isset($keyword)? $keyword : '' }}" 
+                    autocomplete="off">
+                    
+                <ul>
+                    <!-- [Search Results] -->
+                </ul>
+            </div>
             <button class="btn btn-light text-primary" type="submit"><i class="fa fa-search"></i></button>
         </form>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

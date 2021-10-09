@@ -36,12 +36,33 @@ $(document).ready(function(){
     /**
      * Search Products
      */
-    $('#search-keyword').keyup(function() {
+    $('.search-results').find('ul').hide();
+    $('#search-keyword').on('keyup', function(e) {
+        let keyword = $(this).val();
+        if (!keyword || keyword.length < 3) {
+            $('.search-results').find('ul').hide();
+            return;
+        }
+
         $.ajax({
-            url: `${url}'/products?forAjax=1&keyword=${$(this).val()}`,
+            type: 'GET',
+            url: url + '/products?forAjax=1&keyword=' + keyword,
         })
         .done(function(data) {
-            
+            if (data) {
+                let html = '';
+                $('.search-results').find('ul').html(html);
+
+                data.forEach(function(item) {
+                    html += `
+                        <li>
+                            <a href="${item.url}">${item.title}</a>
+                        </li>
+                    `; 
+                });
+
+                $('.search-results').find('ul').append(html).show();
+            }
         });
     });
 });
